@@ -1,0 +1,115 @@
+Table All_Products {
+  id integer [primary key]
+  Size single_choice
+  Product_Variant_Description integer [ref: > Product_Variant.id]
+  Product "formula[varchar]"
+  Stock_Alert "formula[single_choice]"
+  Brand "formula[integer]" [ref: > Add_Products.id]
+  Color "formula[integer]" [ref: > Color.id]
+  In_Stock "formula[numeric]"
+  Received "formula[numeric]"
+  SKU "formula[varchar]"
+  Sold "formula[numeric]"
+  Cost_per_Unit "formula[numeric]"
+  QTY_on_Order "formula[numeric]"
+}
+
+Table Add_Products {
+  id integer [primary key]
+  Brand_Code varchar
+  Name_Brand single_choice
+  Product varchar
+}
+
+Table Color {
+  id integer [primary key]
+  Code varchar
+  Color single_choice
+}
+
+Table Incoming_Orders {
+  id integer [primary key]
+  Status single_choice
+  Tanggal_Diterima date
+  Order_Date date
+  Total "formula[numeric]"
+  Order_Number "formula[date]"
+}
+
+Table Product_Variant {
+  id integer [primary key]
+  Name_Brand integer [ref: > Add_Products.id]
+  Color integer [ref: > Color.id]
+  Photos file
+  Cost_per_Unit numeric
+  Product "formula[default]"
+  Color_Code "formula[default]"
+  Description "formula[varchar]"
+}
+
+Table Incoming_Order_Line_Items {
+  id integer [primary key]
+  Order_Number integer [ref: > Incoming_Orders.id]
+  SKU integer [ref: > All_Products.id]
+  Qty numeric
+  Total "formula[numeric]"
+  Received_Qty "formula[numeric]"
+  Cost_per_Unit "formula[numeric]"
+}
+
+Table Outgoing_Orders {
+  id integer [primary key]
+  Name varchar
+  Phone varchar
+  Email varchar
+  Financial_Status single_choice
+  Order_ID numeric
+  Paid_At date
+  Fulfillment_Status single_choice
+  Currency varchar
+  Subtotal numeric
+  Taxes numeric
+  Shipping numeric
+  Discount_Code varchar
+  Shipping_Method single_choice
+  Discount_Amount numeric
+  Amount_Paid numeric
+  Created_At date
+  Lineitem_Quantity numeric
+  Line_Item_SKU integer [ref: > All_Products.id]
+  Billing_Name varchar
+  Billing_Address_1 varchar
+  Billing_Street varchar
+  Billing_City varchar
+  Billing_Address_2 varchar
+  Billing_State varchar
+  Billing_Zip numeric
+  Billing_Country varchar
+  Billing_Phone varchar
+  Shipping_Name varchar
+  Shipping_Street varchar
+  Shipping_Address_1 varchar
+  Shipping_Address_2 varchar
+  Shipping_City varchar
+  Shipping_State varchar
+  Shipping_Zip varchar
+  Shipping_Country varchar
+  Shipping_Phone varchar
+  Notes varchar
+  Cancelled_At varchar
+  Payment_Method varchar
+  Refunded_Amount varchar
+  Total "formula[numeric]"
+  Line_item_Name "formula[default]"
+  Line_Item_Price "formula[numeric]"
+  Outstanding_Balance "formula[numeric]"
+}
+
+Table GristDocTour {
+  id integer [primary key]
+  Title varchar
+  Body varchar
+  Placement varchar
+  LocationCell varchar
+  Location "formula[varchar]"
+}
