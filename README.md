@@ -6,7 +6,7 @@ This Python script `grist_parser.py` provides functionality to convert [Grist](h
 
 Clone this repository using Git:
 ```bash
-git clone https://github.com/yourusername/grist-type-converter.git
+git clone https://github.com/arnaud-robin/grist-db-parser
 ```
 
 ## Usage 
