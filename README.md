@@ -1,4 +1,4 @@
-# Grist Type Converter
+# Grist DB parser
 
 This Python script `grist_parser.py` provides functionality to convert [Grist](https://github.com/gristlabs/grist-core) code view types to [DBML](https://github.com/holistics/dbml) language. It's designed to help with representing a document database structure definition as well as visualize it on [dbdiagram.io](https://dbdiagram.io/).
 
