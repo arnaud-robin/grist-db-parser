@@ -39,7 +39,7 @@ def parse_grist_code(file_path):
     current_class = None
     current_formula_type = '"formula[default]"'
 
-    with open(file_path, 'r') as file:
+    with open(file_path, 'r', encoding="utf-8") as file:
         for line in file:
             class_match = re.search(r'class (\w+):', line)
             field_match = re.search(r'(\w+) = grist\.(\w+)', line)
@@ -60,7 +60,7 @@ def parse_grist_code(file_path):
                     current_class=new_class
                 tables[current_class] = []
             elif field_match and current_class:
-                field_name, grist_type = map(str.strip, line.split('='))
+                field_name, grist_type = map(str.strip, line.split('=', 1))
                 sql_type = convert_type(grist_type)
                 tables[current_class].append((field_name, sql_type))
 
